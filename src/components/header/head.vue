@@ -16,6 +16,7 @@
         <section class="title_head ellipsis" v-if="headTitle">
             <span class="title_text">{{ headTitle }}</span>
         </section>
+        <slot name="changecity"></slot>
     </header>
 </template>
 

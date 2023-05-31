@@ -23,6 +23,20 @@ export const groupcity = () => fetch('/v1/cities', {
 });
 
 /**
+ * 获取当前所在城市
+ */
+export const currentCity = number => fetch('/v1/cities/' + number);
+
+/**
+ * 获取搜索地址
+ */
+export const searchPlace = (cityid, value) => fetch('/v1/pois', {
+    type: 'search',
+    city_id: cityid,
+    keyword: value
+});
+
+/**
  * 获取用户信息
  */
 export const getUser = () => fetch('/v1/user', {user_id: getStore('user_id')});
