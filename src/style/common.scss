@@ -16,6 +16,7 @@ body, div, span, header, footer, nav, section, aside, article, ul, dl, dt, dd, l
     }
 }
 
+// 这是自定义了滚动条之后又隐藏了。。。
 /*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/  
 ::-webkit-scrollbar  
 {  
@@ -88,6 +89,7 @@ html,body{
     display: block;
 }
 
+// ellipsis 是省略号的意思，即三个点...
 .ellipsis{
     overflow: hidden;
     text-overflow: ellipsis;
