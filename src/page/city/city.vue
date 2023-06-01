@@ -72,9 +72,15 @@
                     searchPlace(this.cityid, this.inputValue).then(res => {
                         this.historyTitle = false;
                         if(res instanceof Array) {
+                            // 正常返回数组
                             this.placeList = res;
                             this.placeNone = res.length ? false : true;
                         } else {
+                            // 错误时，清空placeList
+                            // this.placeList = null;
+                            // this.placeNone = true;
+                            // 错误时显示我的大学
+                            this.placeList = [{"name":"北京信息科技大学(小营校区)","address":"北京市海淀区小营东路12号","latitude":40.037994,"longitude":116.347117,"geohash":"40.037994,116.347117"}];
                             this.placeNone = true;
                         }
                     });
@@ -102,7 +108,11 @@
                     this.placeHistory.push(chosenPlace);
                 }
                 setStore('placeHistory', this.placeHistory);
-                this.$route.push({
+                // 注意：
+                // this.$router 和 this.$route 是不一样的
+                // $router 是路由器对象
+                // $route 是路由配置对象
+                this.$router.push({
                     path: '/msite', 
                     query: {geohash}
                 });

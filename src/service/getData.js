@@ -37,6 +37,23 @@ export const searchPlace = (cityid, value) => fetch('/v1/pois', {
 });
 
 /**
+ * 获取msite页面地址信息
+ */
+export const msiteAddress = geohash => fetch('/v2/pois/' + geohash);
+// fetch的路径少写了一个斜杠，导致报错
+// export const msiteAddress = geohash => fetch('/v2/pois' + geohash);
+// SyntaxError: Unexpected token '<', "<!DOCTYPE "... is not valid JSON
+
+/**
+ * 获取msite页面食品分类列表
+ */
+export const msiteFoodTypes = geohash => fetch('/v2/index_entry', {
+    geohash,
+    group_type: '1',
+    'flags[]': 'F'
+});
+
+/**
  * 获取用户信息
  */
 export const getUser = () => fetch('/v1/user', {user_id: getStore('user_id')});
