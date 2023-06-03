@@ -27,7 +27,7 @@
                 </div>
                 <div class="swiper-pagination"></div>
             </div>
-            <!-- 如果slider还未加载出来就显示edge图标动画 -->
+            <!-- 如果slider还未加载出来就显示图片动画 -->
             <img src="../../images/fl.svg" alt="Microsoft Edge" class="fl_back animation_opactiy" v-else>
         </nav>
         <div class="shop_list_container">
@@ -37,7 +37,7 @@
 	    		</svg>
                 <span class="shop_header_title">附近商家</span>
             </header>
-            <!-- <shop-list v-if="hasGotData" :geohash="geohash"></shop-list> -->
+            <shop-list v-if="hasGotData" :geohash="geohash"></shop-list>
         </div>
         <!-- <foot-guide></foot-guide> -->
     </div>
@@ -48,7 +48,7 @@ import {mapMutations} from 'vuex'
 // import {imgBaseUrl} from 'src/config/env'
 import headTop from '../../components/header/head'
 // import footGuide from '../../components/footer/footGuide'
-// import shopList from '../../components/common/shopList'
+import shopList from '../../components/common/shopList'
 import {msiteAddress, msiteFoodTypes, cityGuess} from '../../service/getData'
 import '../../plugins/swiper.min.js'
 import '../../style/swiper.min.css'
@@ -78,7 +78,8 @@ export default {
         // 记录当前经度纬度和地址
         this.RECORD_ADDRESS(res);
 
-        this.hasGotData = true;
+        // 因为res 是由await 得到的，和res 有关的语句会异步执行，无关的语句会同步执行。所以前面加上if(res)
+        if(res) this.hasGotData = true;
     },
     async activated() {
         // 有缓存的情况下，每次返回此页，都更新geohash
@@ -119,7 +120,7 @@ export default {
     },
     components: {
         headTop,
-        // shopList,
+        shopList,
         // footGuide
     },
     methods: {
