@@ -68,7 +68,10 @@
 import {mapState} from 'vuex'
 import {shopList} from '../../service/getData'
 import {imgBaseUrl} from '../../config/env'
-import {showBack, animate} from '../../config/mUtils'
+import {
+    showBack, 
+    // animate
+} from '../../config/mUtils'
 // import {
 //     loadMore, 
 //     getImgPath,
@@ -121,8 +124,8 @@ export default {
             if(res.length < 20) {
                 this.touchEnd = true;
             }
-            // 因为res 是由await 得到的，和res 有关的语句会异步执行，无关的语句会同步执行。所以前面加上if(res)
-            if(res) this.showLoading = false;
+            // if(res) this.showLoading = false;
+			this.showLoading = false; // 之前写错了，不需要if(res)
             // 开始监听scrollTop的值，达到一定程度后显示返回顶部按钮
             showBack(status => {
                 this.showBackStatus = status;

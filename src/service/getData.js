@@ -82,6 +82,16 @@ export const shopList = (latitude, longitude, offset,
 };
 
 /**
+ * 获取search页面搜索结果
+ */
+export const searchRestaurant = (geohash, keyword) => fetch('/v4/restaurants', {
+	'extras[]': 'restaurant_activity',
+	geohash,
+	keyword,
+	type: 'search'
+});
+
+/**
  * 获取用户信息
  */
 export const getUser = () => fetch('/v1/user', {user_id: getStore('user_id')});

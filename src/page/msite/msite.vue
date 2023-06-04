@@ -39,7 +39,7 @@
             </header>
             <shop-list v-if="hasGotData" :geohash="geohash"></shop-list>
         </div>
-        <!-- <foot-guide></foot-guide> -->
+        <foot-guide></foot-guide>
     </div>
 </template>
 
@@ -47,7 +47,7 @@
 import {mapMutations} from 'vuex'
 // import {imgBaseUrl} from 'src/config/env'
 import headTop from '../../components/header/head'
-// import footGuide from '../../components/footer/footGuide'
+import footGuide from '../../components/footer/footGuide'
 import shopList from '../../components/common/shopList'
 import {msiteAddress, msiteFoodTypes, cityGuess} from '../../service/getData'
 import '../../plugins/swiper.min.js'
@@ -78,8 +78,8 @@ export default {
         // 记录当前经度纬度和地址
         this.RECORD_ADDRESS(res);
 
-        // 因为res 是由await 得到的，和res 有关的语句会异步执行，无关的语句会同步执行。所以前面加上if(res)
-        if(res) this.hasGotData = true;
+        // if(res) this.hasGotData = true;
+        this.hasGotData = true; // 之前写错了，不需要if(res)
     },
     async activated() {
         // 有缓存的情况下，每次返回此页，都更新geohash
@@ -121,7 +121,7 @@ export default {
     components: {
         headTop,
         shopList,
-        // footGuide
+        footGuide
     },
     methods: {
         ...mapMutations([
