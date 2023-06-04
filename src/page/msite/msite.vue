@@ -15,14 +15,14 @@
             <div class="swiper-container" v-if="foodTypes.length">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide food_types_container" v-for="(item, index) in foodTypes" :key="index">
-                        <!-- <router-link :to="{path: '/food', query: {geohash, title: foodItem.title, restaurant_catagory_id: getCategoryId(foodItem.link)}}" v-for="foodItem in item" class="link_to_food"> -->
-                        <a v-for="foodItem in item" class="link_to_food">
+                        <router-link :to="{path: '/food', query: {geohash, title: foodItem.title, restaurant_catagory_id: getCategoryId(foodItem.link)}}" v-for="foodItem in item" :key='foodItem' class="link_to_food">
+                        <!-- <a v-for="foodItem in item" class="link_to_food"> -->
                             <figure>
                                 <img :src="imgBaseUrl + foodItem.image_url" alt="foodItem.image_url">
                                 <figcaption>{{ foodItem.title }}</figcaption>
                             </figure>
-                        </a>
-                        <!-- </router-link> -->
+                        <!-- </a> -->
+                        </router-link>
                     </div>
                 </div>
                 <div class="swiper-pagination"></div>

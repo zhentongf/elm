@@ -1,6 +1,6 @@
 <template>
     <div class="shoplist_container">
-        <ul v-if="shopListArr.length" type="1">
+        <ul v-load-more="loadMore" v-if="shopListArr.length" scrollType="1">
             <!-- shop 是相对路径 -->
             <router-link :to="{path: 'shop', query: {geohash, id: item.id}}" v-for="item in shopListArr" tag="li" :key="item.id" class="shop_li">
                 <section>
@@ -72,10 +72,10 @@ import {
     showBack, 
     // animate
 } from '../../config/mUtils'
-// import {
-//     loadMore, 
-//     getImgPath,
-// } from './mixin'
+import {
+    loadMore, 
+    // getImgPath,
+} from './mixin'
 import loading from './loading'
 import ratingStar from './ratingStar'
 
@@ -104,10 +104,10 @@ export default {
         'supportIds', 'confirmSelect',
         'geohash',
     ],
-    // mixins: [
-    //     loadMore,
-    //     getImgPath,
-    // ],
+    mixins: [
+        loadMore,
+        // getImgPath,
+    ],
     computed: {
         ...mapState([
             'latitude','longitude'
@@ -120,6 +120,8 @@ export default {
         async initData() {
             // 获取数据
             let res = await shopList(this.latitude, this.longitude, this.offset, this.restaurantCategoryId);
+			// 数据的定位加20位
+			this.offset += 20;
             this.shopListArr = [...res];
             if(res.length < 20) {
                 this.touchEnd = true;
@@ -131,7 +133,28 @@ export default {
                 this.showBackStatus = status;
             });
         },
-        
+        // 到达底部加载更多数据
+		async loadMore() {
+			if(this.touchEnd) return;
+			// 防止重复请求
+			if(this.preventRepeatRequest) {
+				return;
+			}
+			this.showLoading = true;
+			this.preventRepeatRequest = true;
+
+			let res = await shopList(this.latitude, this.longitude, this.offset, this.restaurantCategoryId);
+			// 数据的定位加20位
+			this.offset += 20;
+			this.showLoading = false;
+			this.shopListArr = [...this.shopListArr, ...res];
+			//当获取数据小于20，说明没有更多数据，不需要再次请求数据
+			if (res.length < 20) {
+				this.touchend = true;
+				return
+			}
+			this.preventRepeatRequest = false;
+		},
         // 返回顶部
         backTop() {
             document.documentElement.scrollTop = 0;
