@@ -5,7 +5,7 @@ import {
 
 
 
-
+    RECORD_USERINFO,
     GET_USERINFO,
 
 
@@ -30,6 +30,8 @@ import {
 
 } from './mutation-types'
 
+import {setStore, getStore} from '../config/mUtils'
+
 export default {
     // 记录当前经度纬度
     [RECORD_ADDRESS](state, {
@@ -39,16 +41,21 @@ export default {
         state.latitude = latitude;
         state.longitude = longitude;
     },
-    // 获取用户信息存入vuex
+    // 记录用户信息到localStorage
+    [RECORD_USERINFO](state, info) {
+		state.userInfo = info;
+		state.login = true;
+		setStore('user_id', info.user_id);
+	},
+    // 用户信息存入vuex
     [GET_USERINFO](state, info) {
         if(state.userInfo && (state.userInfo.username !== info.username)) {
             return;
         }
-        if(!state.login) {
-            return;
-        }
+        
         if(!info.message) {
             state.userInfo = {...info};
+            state.login = true;
         } else {
             state.userInfo = null;
         }

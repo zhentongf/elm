@@ -12,7 +12,7 @@ const state = {
 	longitude: '', // 当前位置经度
     userInfo: null, // 用户信息
 	geohash: '31.22299,121.36025',//地址geohash值
-
+    login: false, //是否登录
 }
 
 // export default new Vuex.Store({

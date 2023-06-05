@@ -18,6 +18,7 @@
         </section>
         <slot name="msite-title"></slot>
         <slot name="changecity"></slot>
+        <!-- <slot name="changeLogin"></slot> -->
     </header>
 </template>
 
@@ -28,7 +29,7 @@
             return {};
         },
         mounted() {
-            // 获取用户信息
+            // 获取用户信息，登录状态到vuex
             this.getUserInfo();
         },
         props: ['signinUp', 'headTitle', 'goBack'],

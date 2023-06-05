@@ -1,3 +1,4 @@
+<!-- 顶层路由，对应index.html里的 router-view -->
 <template>
     <div>
         <transition name="router-fade" mode="out-in">
@@ -17,7 +18,10 @@ import svgIcon from './components/common/svg';
 export default {
     components: {
         svgIcon
-    }
+    },
+    mounted() {
+        // console.log('顶层路由')
+    },
 }
 </script>
 

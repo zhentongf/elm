@@ -92,6 +92,16 @@ export const searchRestaurant = (geohash, keyword) => fetch('/v4/restaurants', {
 });
 
 /**
+ * 获取图片验证码
+ */
+export const getcaptchas = () => fetch('/v1/captchas', {},'POST');
+
+/**
  * 获取用户信息
  */
 export const getUser = () => fetch('/v1/user', {user_id: getStore('user_id')});
+
+/**
+ * 账号密码登录
+ */
+export const accountLogin = (username, password, captcha_code) => fetch('/v2/login', {username, password, captcha_code}, 'POST');

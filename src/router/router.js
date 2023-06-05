@@ -4,6 +4,7 @@ const home = r => require.ensure([], () => r(require('../page/home/home')), 'hom
 const city = r => require.ensure([], () => r(require('../page/city/city')), 'city')
 const msite = r => require.ensure([], () => r(require('../page/msite/msite')), 'msite')
 const search = r => require.ensure([], () => r(require('../page/search/search')), 'search')
+const login = r => require.ensure([], () => r(require('../page/login/login')), 'login')
 
 export default [{
     path: '/',
@@ -34,6 +35,11 @@ export default [{
         {
             path: '/search/:geohash',
             component: search
+        },
+        //登录注册页
+        {
+            path: '/login',
+            component: login
         },
     ]
 }]
