@@ -102,7 +102,7 @@ export default {
         'restaurantCategoryId', 'restaurantCategoryIds',
         'sortByType', 'deliveryMode',
         'supportIds', 'confirmSelect',
-        'geohash',
+        'geohash', 
     ],
     mixins: [
         loadMore,
@@ -135,22 +135,28 @@ export default {
         },
         // 到达底部加载更多数据
 		async loadMore() {
-			if(this.touchEnd) return;
+			if(this.touchEnd) {
+				// console.log('touchEnd');
+				return;
+			}
 			// 防止重复请求
 			if(this.preventRepeatRequest) {
+				// console.log('preventRepeatRequest');
 				return;
 			}
 			this.showLoading = true;
 			this.preventRepeatRequest = true;
 
-			let res = await shopList(this.latitude, this.longitude, this.offset, this.restaurantCategoryId);
+			let res = await shopList(this.latitude, this.longitude, this.offset, this.restaurantCategoryId, this.restaurantCategoryIds, this.sortByType, this.deliveryMode, this.supportIds);
 			// 数据的定位加20位
 			this.offset += 20;
 			this.showLoading = false;
 			this.shopListArr = [...this.shopListArr, ...res];
 			//当获取数据小于20，说明没有更多数据，不需要再次请求数据
+			
+			// console.log('touchEnd', res.length);
 			if (res.length < 20) {
-				this.touchend = true;
+				this.touchEnd = true;
 				return
 			}
 			this.preventRepeatRequest = false;
@@ -159,6 +165,19 @@ export default {
         backTop() {
             document.documentElement.scrollTop = 0;
         },
+		//监听父级传来的数据发生变化时，触发此函数重新根据属性值获取数据
+		async listenPropChange(){
+			this.showLoading = true;
+			this.offset = 0;
+			let res = await shopList(this.latitude, this.longitude, this.offset, '', this.restaurantCategoryIds, this.sortByType, this.deliveryMode, this.supportIds);
+			this.showLoading = false;
+			this.offset += 20;
+
+			//考虑到本地模拟数据是引用类型，所以返回一个新的数组
+			// this.shopListArr = [...res];
+
+			this.shopListArr = res;
+		},
         zhunshi(supports) {
             let zhunStatus = false;
             if((supports instanceof Array) && supports.length) {
@@ -171,6 +190,17 @@ export default {
             return zhunStatus;
         },
     },
+	watch: {
+		restaurantCategoryIds: function () {
+			this.listenPropChange();
+		},
+		sortByType: function () {
+			this.listenPropChange();
+		},
+		confirmSelect: function () {
+			this.listenPropChange();
+		},
+	}
 }
 </script>
 

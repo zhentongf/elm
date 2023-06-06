@@ -50,3 +50,22 @@ export const loadMore = {
         },
     },
 }
+
+export const getImgPath = {
+    methods: {
+        // 传递过来的图片地址需要处理后才能正常使用
+        getImgPath(path) {
+            let suffix;
+            if(!path) {
+                return '//elm.cangdu.org/img/default.jpg'
+            }
+            if(path.indexOf('jpeg') !== -1) {
+                suffix = '.jpeg'
+            } else {
+                suffix = '.png'
+            }
+            let url = '/' + path.substring(0, 1) + '/' + path.substring(1, 3) + '/' + path.substring(3) + suffix;
+            return 'https://fuss10.elemecdn.com' + url
+        }
+    }
+}

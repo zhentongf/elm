@@ -17,7 +17,7 @@
                     <div class="swiper-slide food_types_container" v-for="(item, index) in foodTypes" :key="index">
                         <!-- [Vue warn]: Avoid using non-primitive value as key -->
                         <!-- :key='foodItem' 改成 :key='index' -->
-                        <router-link :to="{path: '/food', query: {geohash, title: foodItem.title, restaurant_catagory_id: getCategoryId(foodItem.link)}}" v-for="(foodItem, index) in item" :key='index' class="link_to_food">
+                        <router-link :to="{path: '/shopList', query: {geohash, title: foodItem.title, restaurant_category_id: getCategoryId(foodItem.link)}}" v-for="(foodItem, index) in item" :key='index' class="link_to_food">
                         <!-- <a v-for="foodItem in item" class="link_to_food"> -->
                             <figure>
                                 <img :src="imgBaseUrl + foodItem.image_url" alt="foodItem.image_url">
@@ -98,7 +98,7 @@ export default {
         // 获取位置信息
         let res = await msiteAddress(this.geohash);
         this.msiteTitle = res.name;
-        // 记录当前经度纬度和地址
+        // 记录当前经度纬度
         this.RECORD_ADDRESS(res);
     },
     mounted() {

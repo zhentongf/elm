@@ -3,7 +3,7 @@ import App from '../App'
 const home = r => require.ensure([], () => r(require('../page/home/home')), 'home')
 const city = r => require.ensure([], () => r(require('../page/city/city')), 'city')
 const msite = r => require.ensure([], () => r(require('../page/msite/msite')), 'msite')
-// const shopList = r => require.ensure([], () => r(require('../page/shopList/shopList')), 'shopList')
+const shopList = r => require.ensure([], () => r(require('../page/shopList/shopList')), 'shopList')
 const search = r => require.ensure([], () => r(require('../page/search/search')), 'search')
 const login = r => require.ensure([], () => r(require('../page/login/login')), 'login')
 const notFound = r => require.ensure([], () => r(require('../page/notFound/404')), 'notFound')
@@ -34,10 +34,10 @@ export default [{
             meta: { keepAlive: true }
         },
         //特色商铺列表页
-        // {
-        //     path: '/shopList',
-        //     component: shopList
-        // },
+        {
+            path: '/shopList',
+            component: shopList
+        },
         //搜索页
         {
             path: '/search/:geohash',
