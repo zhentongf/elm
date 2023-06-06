@@ -34,7 +34,7 @@
         <p class="login_tips">注册过的用户可凭账号密码登录</p>
         <div class="login_container" @click="mobileLogin">登录</div>
         <router-link to="/forget" class="to_forget" v-if="!loginWay">重置密码？</router-link>
-        <alert-tip v-if="showAlert" :showHide="showAlert" @closeTip="closeTip" :alertText="alertText"></alert-tip>
+        <alert-tip v-show="showAlert" :showHide="showAlert" @closeTip="closeTip" :alertText="alertText"></alert-tip>
     </div>
 </template>
 
