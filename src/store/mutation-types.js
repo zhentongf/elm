@@ -18,7 +18,7 @@ export const SAVE_GEOHASH = 'SAVE_GEOHASH'
 
 
 
-
+export const SAVE_ORDER = 'SAVE_ORDER'
 
 
 

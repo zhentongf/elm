@@ -17,7 +17,7 @@
                     <div class="swiper-slide food_types_container" v-for="(item, index) in foodTypes" :key="index">
                         <!-- [Vue warn]: Avoid using non-primitive value as key -->
                         <!-- :key='foodItem' 改成 :key='index' -->
-                        <router-link :to="{path: '/shopList', query: {geohash, title: foodItem.title, restaurant_category_id: getCategoryId(foodItem.link)}}" v-for="(foodItem, index) in item" :key='index' class="link_to_food">
+                        <router-link :to="{path: '/shops', query: {geohash, title: foodItem.title, restaurant_category_id: getCategoryId(foodItem.link)}}" v-for="(foodItem, index) in item" :key='index' class="link_to_food">
                         <!-- <a v-for="foodItem in item" class="link_to_food"> -->
                             <figure>
                                 <img :src="imgBaseUrl + foodItem.image_url" alt="foodItem.image_url">

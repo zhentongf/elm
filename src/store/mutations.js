@@ -19,7 +19,7 @@ import {
 
 
 
-
+    SAVE_ORDER,
 
 
 
@@ -60,7 +60,12 @@ export default {
             state.userInfo = null;
         }
     },
+    // 保存geohash
     [SAVE_GEOHASH](state, geohash) {
         state.geohash = geohash;
-    }
+    },
+    //进入订单详情页前保存该订单信息
+	[SAVE_ORDER](state, orderDetail) {
+		state.orderDetail = orderDetail;
+	},
 }
