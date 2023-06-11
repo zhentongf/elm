@@ -23,7 +23,7 @@
                   </section>
                   <section>
                     <span class="category_count">{{ item.count }}</span>
-                    <svg v-if="index" width="8" height="8" xmlns="http://www.w3.org/2000/svg" version="1.1" class="category_arrow" >
+                    <svg width="8" height="8" xmlns="http://www.w3.org/2000/svg" version="1.1" class="category_arrow" >
                       <path d="M0 0 L6 4 L0 8"  stroke="#bbb" stroke-width="1" fill="none"/>
                     </svg>
                   </section>

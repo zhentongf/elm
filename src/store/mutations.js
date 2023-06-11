@@ -20,7 +20,7 @@ import {
 
 
     SAVE_ORDER,
-
+    OUT_LOGIN,
 
 
 
@@ -67,5 +67,10 @@ export default {
     //进入订单详情页前保存该订单信息
 	[SAVE_ORDER](state, orderDetail) {
 		state.orderDetail = orderDetail;
+	},
+    //退出登录
+	[OUT_LOGIN](state) {
+		state.userInfo = null;
+		state.login = false;
 	},
 }

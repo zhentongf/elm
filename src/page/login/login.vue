@@ -50,8 +50,8 @@
                 loginWay: false, //登录方式，默认密码登录
                 showPassword: false, // 是否显示密码
                 userInfo: null, //获取到的用户信息
-                userAccount: null, //用户名
-                password: null, //密码
+                userAccount: 'fzt345', //用户名
+                password: '1', //密码
                 captchaCodeImg: null, //验证码地址
                 codeNumber: null, //验证码
                 showAlert: false, //显示提示组件

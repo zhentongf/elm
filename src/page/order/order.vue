@@ -116,7 +116,7 @@
             showDetail(item){
                 this.SAVE_ORDER(item);
                 // this.preventRepeat = false;
-                this.$router.push('/order/orderDetail');
+                // this.$router.push('/order/orderDetail');
             },
         },
         watch: {

@@ -8,6 +8,8 @@ const search = r => require.ensure([], () => r(require('../page/search/search'))
 const login = r => require.ensure([], () => r(require('../page/login/login')), 'login')
 const notFound = r => require.ensure([], () => r(require('../page/notFound/404')), 'notFound')
 const order = r => require.ensure([], () => r(require('../page/order/order')), 'order')
+const profile = r => require.ensure([], () => r(require('../page/profile/profile')), 'profile')
+const info = r => require.ensure([], () => r(require('../page/profile/children/info')), 'info')
 
 export default [{
     path: '/',
@@ -59,6 +61,16 @@ export default [{
             path: '/order',
             component: order,
             children: []
+        },
+        // 个人信息页
+        {
+            path: '/profile',
+            component: profile,
+            children: [{
+                // 个人信息详情页
+                path: 'info',
+                component: info,
+            },]
         },
 
 
