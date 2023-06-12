@@ -2,7 +2,8 @@
     <div class="shoplist_container">
         <ul v-load-more="loadMore" v-if="shopListArr.length" scrollType="1">
             <!-- shop 是相对路径 -->
-            <router-link :to="{path: 'shop', query: {geohash, id: item.id}}" v-for="item in shopListArr" tag="li" :key="item.id" class="shop_li">
+            <!-- <router-link :to="{path: 'shop', query: {geohash, id: item.id}}" v-for="item in shopListArr" tag="li" :key="item.id" class="shop_li"> -->
+			<li v-for="item in shopListArr" :key="item.id" class="shop_li">
                 <section>
                     <img :src="imgBaseUrl + item.image_path" class="shop_img">
                 </section>
@@ -44,7 +45,8 @@
                         </p>
                     </h5>
                 </hgroup>
-            </router-link>
+			</li>
+            <!-- </router-link> -->
         </ul>
         <ul v-else class="animation_opacity">
             <li class="list_back_li" v-for="item in 10" :key="item">

@@ -156,7 +156,7 @@ export default {
         }
     },
     mounted() {
-        // this.initData();
+        this.initData();
     },
     components: {
         headTop,

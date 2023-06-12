@@ -63,7 +63,7 @@
             }
         },
         mounted() {
-            // this.initData();
+            this.initData();
         },
         mixins: [loadMore],
         components: {

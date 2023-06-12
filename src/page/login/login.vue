@@ -75,6 +75,7 @@
             },
             // 获取验证码
             async getCaptchaCode(){
+                // 必须用https获取验证码。用http获取，验证码会立即失效
                 let res = await getcaptchas();
                 this.captchaCodeImg = res.code;
             },
