@@ -9,4 +9,5 @@ package-lock.json
 tree.md
 *.idea
 
+elm/
 dist/
