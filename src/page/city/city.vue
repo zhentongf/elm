@@ -47,6 +47,10 @@
                 this.cityName = res.name;
             });
             this.initData();
+            if(!this.placeList.length) {
+                // 默认显示我的大学
+                this.placeList = [{"name":"北京信息科技大学(小营校区)","address":"北京市海淀区小营东路12号","latitude":40.037994,"longitude":116.347117,"geohash":"40.037994,116.347117"}];
+            }
         },
 
         components: {
@@ -64,7 +68,7 @@
                     this.placeList = JSON.parse(getStore('placeHistory'));
                 } else {
                     // 记录为空时
-                    this.placeList = [{"name":"北京信息科技大学(小营校区)","address":"北京市海淀区小营东路12号","latitude":40.037994,"longitude":116.347117,"geohash":"40.037994,116.347117"}];
+                    this.placeList = [];
                 }
             },
             // 发送搜索信息inputVaule
