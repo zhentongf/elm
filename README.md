@@ -16,6 +16,7 @@
 # 在线展示
 [查看demo请戳这里](https://ronf.top/elm/)（请用chrome手机模式预览）
 
+node 版本过高会导致node-sass报错
 
 
 ### 原项目地址

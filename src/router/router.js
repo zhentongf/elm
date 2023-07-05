@@ -10,6 +10,7 @@ const notFound = r => require.ensure([], () => r(require('../page/notFound/404')
 const order = r => require.ensure([], () => r(require('../page/order/order')), 'order')
 const profile = r => require.ensure([], () => r(require('../page/profile/profile')), 'profile')
 const info = r => require.ensure([], () => r(require('../page/profile/children/info')), 'info')
+const echarts = r => require.ensure([], () => r(require('../page/echarts/echarts')), 'echarts')
 
 export default [{
     path: '/',
@@ -72,7 +73,11 @@ export default [{
                 component: info,
             },]
         },
-
+        // 实验echarts
+        {
+            path: '/echarts',
+            component: echarts
+        },
 
 
 

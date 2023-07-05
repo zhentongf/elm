@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "better-scroll": "1.15.2",
+    "echarts": "^5.4.2",
     "fastclick": "^1.0.6",
     "iscroll": "^5.2.0",
     "showdown": "^1.6.4",
